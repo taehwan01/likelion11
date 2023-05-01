@@ -49,15 +49,20 @@ body {
   margin-top: 2rem;
 }
 
-.list-item,
+.row-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .list-item, */
 #empty-list {
   color: gray;
 }
 
-.list {
+/* .list {
   display: flex;
   flex-direction: row;
-}
+} */
 
 hr {
   background-color: black;
