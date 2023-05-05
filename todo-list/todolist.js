@@ -18,17 +18,11 @@ const addList = () => {
 };
 
 const view = (inputValue) => {
+  // 목록에 원소가 하나라도 존재한다면 empty 문구를 지운다.
   if (list.length > 0) {
     document.querySelector('#empty-list').innerHTML = '';
   }
-  // 엔터 입력
-  // const addButton = document.getElementsByClassName('add-button');
-  // addButton.addEventListener('keyup', (e) => {
-  //   if (e.keyCode === 13) {
-  //     e.preventDefault();
-  //     document.getElementById('addButton').click();
-  //   }
-  // });
+
   const rowDiv = document.createElement('div');
   rowDiv.setAttribute('class', 'row-flex');
   const item = document.createElement('li');
@@ -40,8 +34,8 @@ const view = (inputValue) => {
   deleteButton.addEventListener('click', (e) => {
     deleteList(e);
   });
+  rowDiv.append(item, deleteButton);
   document.querySelector('.lists').append(rowDiv);
-  document.querySelector('.row-flex').append(item, deleteButton);
 };
 
 const deleteList = (e) => {
