@@ -1,4 +1,4 @@
-const list = [];
+let list = [];
 let index = 0;
 
 const addList = () => {
@@ -7,9 +7,10 @@ const addList = () => {
 
   // 입력 유효성 검사
   if (inputValue != '') {
-    list.push({ index: index++, content: inputValue, check: false });
+    list.push({ index: list.length, content: inputValue, check: false });
     // HTML View 수정
     view(inputValue);
+    index++;
     // 입력칸 초기화
     document.getElementById('add-input').value = null;
   } else {
@@ -29,7 +30,7 @@ const view = (inputValue) => {
   item.setAttribute('class', 'list-item');
   item.innerText = inputValue;
   const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('class', 'remove-button');
+  deleteButton.setAttribute('class', `remove-button ${index}`);
   deleteButton.innerText = '-';
   deleteButton.addEventListener('click', (e) => {
     deleteList(e);
@@ -39,7 +40,11 @@ const view = (inputValue) => {
 };
 
 const deleteList = (e) => {
-  console.log(e);
+  // const removeTarget = e.target.classList[1];
+  // const newList = list.filter((el) => el.index !== removeTarget);
+
+  if (e.target.classList.contains('remove-button'))
+    e.target.parentElement.remove();
 };
 
 // TODO: foreach 적용하기
