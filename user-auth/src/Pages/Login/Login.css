@@ -1,0 +1,43 @@
+h1 {
+  margin-top: 0;
+  font-size: 2.5rem;
+}
+.login-component {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.login-contents {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-input {
+  padding: 0.5rem;
+  border: 1px solid black;
+  font-size: 1.4rem;
+}
+
+.login-button {
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.error-message {
+  font-size: 0.5rem;
+  color: rgb(190, 0, 0);
+  margin-bottom: 1rem;
+}
