@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Login.css';
 
 const Login = () => {
+  // hooks
+  const navigate = useNavigate();
+
   // state
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -43,48 +47,58 @@ const Login = () => {
   };
 
   return (
-    <div className='login-component'>
-      <div className='login-contents'>
-        <h1>Enter your email and password to login.</h1>
-        <form className='login-form'>
-          <input
-            className='user-input'
-            type='email'
-            placeholder='Enter email'
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {emailError === '' ? (
-            <>
-              <br />
-            </>
-          ) : (
-            <p className='error-message'>{emailError}</p>
-          )}
-          <input
-            className='user-input'
-            type='password'
-            placeholder='Enter password'
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          {passwordError === '' ? (
-            <>
-              <br />
-            </>
-          ) : (
-            <p className='error-message'>{passwordError}</p>
-          )}
-          <button
-            disabled={emailValidation || passwordValidation}
-            className='user-input login-button'
-            onClick={handleLoginClick}
-          >
-            Login !
-          </button>
-        </form>
+    <>
+      <div className='login-component'>
+        <button
+          className='back-button'
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          &#60;
+        </button>
+        <div className='login-contents'>
+          <h1>Enter your email and password to login.</h1>
+          <form className='login-form'>
+            <input
+              className='user-input'
+              type='email'
+              placeholder='Enter email'
+              value={email}
+              onChange={handleEmailChange}
+            />
+            {emailError === '' ? (
+              <>
+                <br />
+              </>
+            ) : (
+              <p className='error-message'>{emailError}</p>
+            )}
+            <input
+              className='user-input'
+              type='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            {passwordError === '' ? (
+              <>
+                <br />
+              </>
+            ) : (
+              <p className='error-message'>{passwordError}</p>
+            )}
+            <button
+              disabled={emailValidation || passwordValidation}
+              className='user-input login-button'
+              onClick={handleLoginClick}
+            >
+              Login !
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
