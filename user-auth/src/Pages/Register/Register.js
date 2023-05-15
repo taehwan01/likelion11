@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import './Login.css';
+import './Register.css';
 
-const Login = () => {
+const Register = () => {
   // state
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -11,6 +11,11 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [passwordValidation, setPasswordValidation] = useState(false);
+
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [confirmPasswordValidation, setConfirmPasswordValidation] =
+    useState(false);
 
   const emailRegex = new RegExp(
     "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
@@ -38,6 +43,15 @@ const Login = () => {
       setPasswordValidation(true);
     }
   };
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+    if (password !== confirmPassword) {
+      setConfirmPasswordError('Differed from the first password.');
+    } else {
+      setConfirmPasswordError('');
+      setConfirmPasswordValidation(true);
+    }
+  };
   const handleLoginClick = () => {
     alert(`Email: ${email}\nPassword: ${password} logged in.`);
   };
@@ -45,7 +59,7 @@ const Login = () => {
   return (
     <div className='login-component'>
       <div className='login-contents'>
-        <h1>Enter your email and password to login.</h1>
+        <h1>Fill in the form to register.</h1>
         <form className='login-form'>
           <input
             className='user-input'
@@ -75,6 +89,20 @@ const Login = () => {
           ) : (
             <p className='error-message'>{passwordError}</p>
           )}
+          <input
+            className='user-input'
+            type='password'
+            placeholder='Confirm password'
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+          />
+          {confirmPasswordValidation ? (
+            <>
+              <br />
+            </>
+          ) : (
+            <p className='error-message'>{confirmPasswordError}</p>
+          )}
           <button
             disabled={emailValidation || passwordValidation}
             className='user-input login-button'
@@ -88,4 +116,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
