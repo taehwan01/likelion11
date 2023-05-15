@@ -46,7 +46,7 @@ const Register = () => {
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
     if (password !== confirmPassword) {
-      setConfirmPasswordError('Differed from the first password.');
+      setConfirmPasswordError('Wrong password.');
     } else {
       setConfirmPasswordError('');
       setConfirmPasswordValidation(true);
