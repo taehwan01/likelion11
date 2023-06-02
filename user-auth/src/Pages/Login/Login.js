@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 import './Login.css';
 
+const user = {
+  email: 'monte6198@gmail.com',
+  password: 'Example1!2',
+};
+
 const Login = () => {
   // hooks
   const navigate = useNavigate();
@@ -43,7 +48,11 @@ const Login = () => {
     }
   };
   const handleLoginClick = () => {
-    alert(`Email: ${email}\nPassword: ${password} logged in.`);
+    if (emailValidation && passwordValidation) {
+      if (user.email === email && user.password === password) {
+        alert(`Welcome, ${email}`);
+      } else alert('Try again.');
+    } else alert('Try again.');
   };
 
   return (
@@ -89,7 +98,7 @@ const Login = () => {
               <p className='error-message'>{passwordError}</p>
             )}
             <button
-              disabled={emailValidation || passwordValidation}
+              // disabled={emailValidation && passwordValidation}
               className='user-input login-button'
               onClick={handleLoginClick}
             >
